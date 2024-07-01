@@ -1,22 +1,21 @@
-import { useState } from 'react'
-import './Style.css'
-import Sidenav from '../Components/Sidenav'
-import Header from '../Components/Header'
-import Resumo from '../Pages/Resumo'
+import Header from "./Components/Header";
+import Sidenav from "./Components/Sidenav";
+import { DataContextProvider } from "./Context/DataContext";
+import Resumo from "./Pages/Resumo";
+import "./Style.css";
 
 function App() {
-
-
   return (
-    <div>
-      <Sidenav></Sidenav>
-      <main>
-        <Header></Header>
-       <Resumo></Resumo>
-      </main>
-      
-    </div>
-  )
+    <DataContextProvider>
+      <div className="container">
+        <Sidenav />
+        <main>
+          <Header />
+          <Resumo />
+        </main>
+      </div>
+    </DataContextProvider>
+  );
 }
 
-export default App
+export default App;
