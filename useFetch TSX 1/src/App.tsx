@@ -12,8 +12,8 @@ type Produto = {
 
 function App() {
   const produtos = useFetch<Produto[]>("https://data.origamid.dev/produtos/")
-  //aqui ele iria pegar só UM produto já que ele não é um array
-  /* const produtos = useFetch<Produto>("https://data.origamid.dev/produtos/") */
+  //aqui ele iria pegar só UM produto já que ele não é um array de produtos
+  /* const produtos = useFetch<Produto>("https://data.origamid.dev/produtos/idaqui") */
   return (
     <div>
    
