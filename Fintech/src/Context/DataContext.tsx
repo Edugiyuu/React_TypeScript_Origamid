@@ -1,10 +1,14 @@
-import React from "react";
+import React, { Dispatch } from "react";
 import useFetch from "../Hooks/useFetch";
 
 type IDataContext = {
   data: IVenda[] | null;
   loading: boolean;
   error: string | null;
+  inicio: string;
+  final: string;
+  setInicio: Dispatch<React.SetStateAction<string>>
+  setFinal:Dispatch<React.SetStateAction<string>>
 };
 
 type IVenda = {
@@ -26,12 +30,16 @@ export const useData = () => {
 };
 
 export const DataContextProvider = ({ children }: React.PropsWithChildren) => {
+  const [inicio, setInicio] = React.useState("");
+  const [final, setFinal] = React.useState("");
+console.log(inicio);
+
   const { data, loading, error } = useFetch<IVenda[]>(
-    "https://data.origamid.dev/vendas/",
+    `https://data.origamid.dev/vendas/${inicio}&final=${final}`,
   );
 
   return (
-    <DataContext.Provider value={{ data, loading, error }}>
+    <DataContext.Provider value={{ data, loading, error,inicio, setInicio,final,setFinal}}>
       {children}
     </DataContext.Provider>
   );
